@@ -1,9 +1,11 @@
 using Microsoft.Playwright;
-namespace PlaywrightTests.Pages;
+namespace Playwright_CSharp_Dotnet.Pages;
 public class HomePage
 {
     private IPage _page;
     public HomePage(IPage page) => _page = page;                //_page is the Instance of class HomePage.cs
+    ReadJson json = new ReadJson();
+
 
     //Declaration of Locators
     private ILocator _lnkLogin => _page.Locator("text=Login");
@@ -18,10 +20,18 @@ public class HomePage
 
     // Action Methods
     public async Task ClickLogin() => await _lnkLogin.ClickAsync();                                 //Click on Header Login
-    public async Task EnterBookName(string bookname) => await _searchBar.FillAsync(bookname);       //Enter the book name in the search bar
-    public async Task SelectBook() => await _bookIem.ClickAsync();                                  //Select the book
-    public async Task AddToCartButton() => await _addToCart.ClickAsync();                           //Click on Add to cart Button
+    public async Task EnterBookNameAndSelect(string bookname)
+    {
+        await _searchBar.FillAsync(bookname);       //Enter the book name in the search bar
+        await _bookIem.ClickAsync();
+    }
+    public async Task AddToCartButton()
+    {
+        await _addToCart.ClickAsync();                           //Click on Add to cart Button
+        Thread.Sleep(5000);
+    }
 
+    public async Task LaunchUrl() => await _page.GotoAsync(json.ReadData("url"));
     public async Task<bool> CartCountIsNotZero()                                                    //Verify that cart count is not zero
     {
         string cartCount = await _cartCount.TextContentAsync();
@@ -33,5 +43,6 @@ public class HomePage
     {
         await _userDropDown.ClickAsync();
         await _lnkLogout.ClickAsync();
+        Thread.Sleep(5000);
     }
 }
