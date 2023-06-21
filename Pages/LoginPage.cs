@@ -1,10 +1,10 @@
 using Microsoft.Playwright;
-namespace PlaywrightTests.Pages;
+namespace Playwright_CSharp_Dotnet.Pages;
 public class LoginPage
 {
     private IPage _page;
     public LoginPage(IPage page) => _page = page;                //_page is the Instance of class LoginPage.cs
-
+    ReadJson json = new ReadJson();
     //Declaration of Locators
     private ILocator _txtUserName => _page.Locator("#mat-input-0");
     private ILocator _txtPassword => _page.Locator("#mat-input-1");
@@ -20,10 +20,19 @@ public class LoginPage
         await _txtPassword.FillAsync(password);
         await _btnLogin.ClickAsync();
     }
+
+     public async Task Login()                                //Enter the login Credentials
+    {
+        await _txtUserName.FillAsync(json.ReadData("validUserName"));
+        await _txtPassword.FillAsync(json.ReadData("validPassword"));
+        await _btnLogin.ClickAsync();
+        Thread.Sleep(5000);
+    }
     public async Task<bool> LoginHeader() => await _loginHeader.IsVisibleAsync();           //Verify that login header is visible
     public async Task<bool> AlertMessage()                                                  //Verify that Alert message is visible
     {
         Console.WriteLine("The " + await _alertMessage.TextContentAsync());
+        Thread.Sleep(5000);
         return await _alertMessage.IsVisibleAsync();
     }
 }
