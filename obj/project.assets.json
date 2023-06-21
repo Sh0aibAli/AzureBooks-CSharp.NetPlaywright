@@ -1683,11 +1683,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\harsh\\Playwright-CSharp-Dotnet\\Playwright-CSharp-Dotnet.csproj",
+      "projectUniqueName": "C:\\Users\\harsh\\OneDrive\\Desktop\\AzureBooks-CSharp.NetPlaywright\\Playwright-CSharp-Dotnet.csproj",
       "projectName": "Playwright-CSharp-Dotnet",
-      "projectPath": "C:\\Users\\harsh\\Playwright-CSharp-Dotnet\\Playwright-CSharp-Dotnet.csproj",
+      "projectPath": "C:\\Users\\harsh\\OneDrive\\Desktop\\AzureBooks-CSharp.NetPlaywright\\Playwright-CSharp-Dotnet.csproj",
       "packagesPath": "C:\\Users\\harsh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\harsh\\Playwright-CSharp-Dotnet\\obj\\",
+      "outputPath": "C:\\Users\\harsh\\OneDrive\\Desktop\\AzureBooks-CSharp.NetPlaywright\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\harsh\\AppData\\Roaming\\NuGet\\NuGet.Config"

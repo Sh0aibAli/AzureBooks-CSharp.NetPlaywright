@@ -21,7 +21,7 @@ public class TestRunner
         //Test Execution Flow steps
         await homePage.LaunchUrl();
         await homePage.ClickLogin();                                        //Click on the login button on the top right
-        await loginPage.Login("prekksha", "Pass1234");                         //Enter the credentials on the login page
+        await loginPage.Login("saifi", "Pass1234");                         //Enter the credentials on the login page
 
         Assert.IsTrue(await loginPage.AlertMessage());                      //Verify that incorrect cresentials message is visible.
     }
