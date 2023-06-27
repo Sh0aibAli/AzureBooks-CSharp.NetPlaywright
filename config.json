@@ -1,7 +1,8 @@
-{
-    "url": "https://bookcart.azurewebsites.net",
-    "testToBeSearched": "",
-    "validUserName": "ortoni11",
-    "validPassword": "Pass1234",
-    "invalidPassword": ""
+﻿{
+  "url": "https://bookcart.azurewebsites.net",
+  "testToBeSearched": "",
+  "validUserName": "ortoni11",
+  "validPassword": "Pass1234",
+  "invalidUserName": "saifi",
+  "invalidPassword": "Pass0000"
 }

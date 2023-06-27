@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Playwright-CSharp-Dotnet.csproj",
+                "${workspaceFolder}/POM_Basic.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/Playwright-CSharp-Dotnet.csproj",
+                "${workspaceFolder}/POM_Basic.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/Playwright-CSharp-Dotnet.csproj"
+                "${workspaceFolder}/POM_Basic.csproj"
             ],
             "problemMatcher": "$msCompile"
         }

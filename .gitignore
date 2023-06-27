@@ -1,4 +1,7 @@
-.vscode
-bin
-obj
-/Playwright-CSharp-Dotnet.csproj
+﻿TestResults/
+Hooks/
+extent-config.xml
+bin/
+obj/
+.vs
+.idea

@@ -1,12 +1,13 @@
-# AzureBooks-CSharp.NetPlaywright
-This is the basic project of C#,Selenium and Playwright. I have tried to build a framework based on Page Object Model
 
+```
+This is the basic project of C#,Sekenium and NUnit. I have tried to build a framework based on Page Object Model
+```
 ## Technology Used
 ```
   1. C#
-  2. .Net
-  3. Playwright 
-  4. Selenium
+  2. Selenium
+  3. Nunit
+  4. Playwright
   5. Visual Studio
 ```
 
@@ -15,42 +16,39 @@ This is the basic project of C#,Selenium and Playwright. I have tried to build a
 ## How To Run
 ```
 Using Visual Studio
-1. Open the folder in VS Code
-2. After Successful build, Go to TestRunner.cs class inside Tests folder.
-3. To Run all tests, select the Run All Tests button above the TestRunner class inside the code.
-5. To Run single test , Select the Run Test button above the test method defined in the class TestRunner.cs
+1.Go to Build option at top navigation bar and Build Framwork
+2. After Successful build, Go to Test optin at top naivigation bar
+3. Select Test Explorer
+4. To Run all tests, select the first icon on left on Test Explorer window
+5. To Run single feature file, Select the feature file first and the select the second icon on Test Explorer window
+
+Using Termianl
+```
+ A.dotnet test
+ ```
+ ```
+ B 1.Go to sourceFolder>bin>Debug>net6.0
+   2. Run command - vstest.console.exe POM_Basic.dll 
 ```
 
-## Using Terminal
-Run command - 
+### Framework type: Page Object Model flavored with Specflow
 ```
-dotnet test
-```
-
-### Framework type: Page Object Model using Playwright
-
 Contains  UI tests
-
+```
 
 ### Project Structure
-Source:- Consist of Pages Package
-
+```
+Drivers:-
+This package contains the chrome driver and seleniumWebDriver class. Currently, these scripts are running on chrome of windows. If you want to execute on chrome of Mac then you need to add the chrome driver for mac in this folder
+```
+```
 Pages:-
-Contains locators of objects involved in pages of website and their action methods.
-
+Contains locators of objects involved in pages of website
+```
+```
 Tests:-
 This package contains all tests.
-
+```
 Utilities:-
 This package contains Json Reader.
-
-
-## Test generator
-## Generate tests with the Playwright Inspector
-
-Use the codegen command to run the test generator followed by the URL of the website you want to generate tests for. The URL is optional and you can always run the command without it and then add the URL directly into the browser window instead.
-
 ```
-bin/Debug/net7.0/playwright.ps1 codegen google.com
-```
-Using Playwright Inspector window you can record the steps while performing the events on the Browser window.

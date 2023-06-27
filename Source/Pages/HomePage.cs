@@ -1,48 +1,76 @@
-using Microsoft.Playwright;
-namespace Playwright_CSharp_Dotnet.Source.Pages;
-public class HomePage 
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using POM_Basic.Source.Drivers;
+using POM_Basic.Utilities;
+using SeleniumExtras.PageObjects;
+
+
+namespace POM_Basic.Source.Pages
 {
-    private IPage _page;
-    public HomePage(IPage page) => _page = page;                //_page is the Instance of class HomePage.cs
-    ReadJson json = new ReadJson();
-
-    
-
-    //Declaration of Locators
-    private ILocator _lnkLogin => _page.Locator("text=Login");
-    private ILocator _searchBar => _page.Locator("//*[@type='search']");
-    private ILocator _bookIem => _page.Locator("//*[text()=' Roomies ']");
-    private ILocator _addToCart => _page.GetByRole(AriaRole.Button, new() { Name = "Add to Cart" });
-    private ILocator _cartCount => _page.Locator("#mat-badge-content-0");
-    private ILocator _userDropDown => _page.Locator("//button/*/*[text()='arrow_drop_down']");
-    private ILocator _lnkLogout => _page.GetByRole(AriaRole.Menuitem, new() { Name = "Logout" });
-
-
-
-    // Action Methods
-    public async Task ClickLogin() => await _lnkLogin.ClickAsync();                                 //Click on Header Login
-    public async Task EnterBookNameAndSelect(string bookname)
+    public class HomePage : Driver
     {
-        await _searchBar.FillAsync(bookname);       //Enter the book name in the search bar
-        await _bookIem.ClickAsync();
-    }
-    public async Task AddToCartButton()
-    {
-        await _addToCart.ClickAsync();                           //Click on Add to cart Button
-        Thread.Sleep(1000);
-    }
+        ReadJson json = new ReadJson();
 
-    public async Task LaunchUrl() => await _page.GotoAsync(json.ReadData("url"));
-    public async Task<bool> CartCountIsNotZero()                                                    //Verify that cart count is not zero
-    {
-        string cartCount = await _cartCount.TextContentAsync();
-        Console.WriteLine("There are " + cartCount + " books added in the cart.");
-        int num = Int32.Parse(cartCount);
-        return num > 0;
-    }
-    public async Task ClickLogOut()                                                                 //Click on the Logout button
-    {
-        await _userDropDown.ClickAsync();
-        await _lnkLogout.ClickAsync();
+        public HomePage()
+        {
+            PageFactory.InitElements(_driver, this);
+        }
+
+        DefaultWait<IWebDriver> fluentWait = new DefaultWait<IWebDriver>(_driver);
+        //Declaration of Locators
+        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Login')]")] private IWebElement _lnkLogin;
+        [FindsBy(How = How.XPath, Using = "//input[@placeholder='Search books or authors']")] private IWebElement _searchBar;
+        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Roomies')]")] private IWebElement _bookIem;
+        [FindsBy(How = How.XPath, Using = "//button/span[contains(text(),'Add to Cart')]")] private IWebElement _addToCart;
+        [FindsBy(How = How.Id, Using = "mat-badge-content-0")] private IWebElement _cartCount;
+        [FindsBy(How = How.XPath, Using = "//button/*/*[text()='arrow_drop_down']")] private IWebElement _userDropDown;
+        [FindsBy(How = How.XPath, Using = "//button[contains(text(),'Logout')]")] private IWebElement _lnkLogout;
+
+
+        // Action Methods
+        public void LaunchUrl()
+        {
+            _driver.Navigate().GoToUrl(json.ReadData("url"));
+        }
+        public async Task Click_On_Login_Button() => _lnkLogin.Click();                                 //Click on Header Login
+        public void Enter_Book_Name_And_Select_Book(string bookname)
+        {
+           
+            // fluentWait.Timeout = TimeSpan.FromSeconds(5);
+            // fluentWait.PollingInterval = TimeSpan.FromMilliseconds(250);
+            // IWebElement searchResult = fluentWait.Until(x => x.FindElement(By.XPath("//input[@placeholder='Search books or authors']")));
+            Thread.Sleep(2000);
+            _searchBar.SendKeys(bookname);                                             //Enter the book name in the search bar
+            Thread.Sleep(2000);
+            _bookIem.Click();
+        }
+
+        public Boolean Cart_Count_Is_Zero()
+        {
+            Thread.Sleep(2000);
+            string cartCount = _cartCount.Text;
+            int num = Int32.Parse(cartCount);
+            return num == 0;
+        }
+        public void Click_On_Add_To_Cart_Button()
+        {
+            fluentWait.Timeout = TimeSpan.FromSeconds(5);
+            fluentWait.PollingInterval = TimeSpan.FromMilliseconds(250);
+            IWebElement searchResult = fluentWait.Until(x => x.FindElement(By.XPath("//button/span[contains(text(),'Add to Cart')]")));
+            _addToCart.Click();                                                        //Click on Add to cart Button
+        }
+        public Boolean CartCountIsNotZero()                                            //Verify that cart count is not zero
+        {
+            Thread.Sleep(2000);
+            string cartCount = _cartCount.Text;
+            Console.WriteLine("There are " + cartCount + " books added in the cart.");
+            int num = Int32.Parse(cartCount);
+            return num > 0;
+        }
+        public async Task ClickLogOut()                                                //Click on the Logout button
+        {
+            _userDropDown.Click();
+            _lnkLogout.Click();
+        }
     }
 }

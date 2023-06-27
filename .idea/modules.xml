@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/AzureBooks-CSharp.NetPlaywright.iml" filepath="$PROJECT_DIR$/.idea/AzureBooks-CSharp.NetPlaywright.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/cSharp-selenium-test-framework.iml" filepath="$PROJECT_DIR$/.idea/cSharp-selenium-test-framework.iml" />
     </modules>
   </component>
 </project>
