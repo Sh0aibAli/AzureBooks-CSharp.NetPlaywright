@@ -3,5 +3,5 @@ Hooks/
 extent-config.xml
 bin/
 obj/
-.vscode/
-.idea/
+.vscode
+.idea
