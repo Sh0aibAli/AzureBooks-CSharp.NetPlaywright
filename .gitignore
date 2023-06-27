@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 /.vscode/
 /.idea/
 /bin/
 /obj/
 /Playwright-CSharp-Dotnet.csproj/
+=======
+.vscode
+.idea
+bin/
+obj/
+/Playwright-CSharp-Dotnet.csproj
+>>>>>>> 4e3b588676b68706bc0059528695dc4ba65a5260
