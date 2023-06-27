@@ -1,0 +1,4 @@
+.vscode
+bin
+obj
+/Playwright-CSharp-Dotnet.csproj

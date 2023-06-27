@@ -1,11 +1,12 @@
 using Microsoft.Playwright;
-namespace Playwright_CSharp_Dotnet.Pages;
-public class HomePage
+namespace Playwright_CSharp_Dotnet.Source.Pages;
+public class HomePage 
 {
     private IPage _page;
     public HomePage(IPage page) => _page = page;                //_page is the Instance of class HomePage.cs
     ReadJson json = new ReadJson();
 
+    
 
     //Declaration of Locators
     private ILocator _lnkLogin => _page.Locator("text=Login");
@@ -28,7 +29,7 @@ public class HomePage
     public async Task AddToCartButton()
     {
         await _addToCart.ClickAsync();                           //Click on Add to cart Button
-        Thread.Sleep(5000);
+        Thread.Sleep(1000);
     }
 
     public async Task LaunchUrl() => await _page.GotoAsync(json.ReadData("url"));
@@ -43,6 +44,5 @@ public class HomePage
     {
         await _userDropDown.ClickAsync();
         await _lnkLogout.ClickAsync();
-        Thread.Sleep(5000);
     }
 }

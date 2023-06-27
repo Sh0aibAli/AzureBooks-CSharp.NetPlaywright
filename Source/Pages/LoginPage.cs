@@ -1,5 +1,5 @@
 using Microsoft.Playwright;
-namespace Playwright_CSharp_Dotnet.Pages;
+namespace Playwright_CSharp_Dotnet.Source.Pages;
 public class LoginPage
 {
     private IPage _page;
