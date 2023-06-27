@@ -1,7 +1,6 @@
 # AzureBooks-CSharp.NetPlaywright
-```
 This is the basic project of C#,Selenium and Playwright. I have tried to build a framework based on Page Object Model
-```
+
 ## Technology Used
 ```
   1. C#
