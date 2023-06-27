@@ -34,6 +34,7 @@ Contains  UI tests
 
 
 ### Project Structure
+Source:- Consist of Pages Package
 
 Pages:-
 Contains locators of objects involved in pages of website and their action methods.
